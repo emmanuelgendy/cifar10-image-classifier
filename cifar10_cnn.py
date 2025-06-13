@@ -56,3 +56,50 @@ print(f"\nTest accuracy: {test_acc:.2f}")
 
 # Save model
 model.save("cifar10_model.h5")
+
+from tensorflow.keras import layers, models
+
+# Define the CNN architecture
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation='relu'),
+
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10)  # Output layer for 10 classes
+])
+
+
+# Compile the model
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+# Train the model
+history = model.fit(x_train, y_train, epochs=10,
+                    validation_data=(x_test, y_test))
+
+
+import matplotlib.pyplot as plt
+
+# Plot accuracy over time
+plt.plot(history.history['accuracy'], label='Train Accuracy')
+plt.plot(history.history['val_accuracy'], label='Val Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.title('Training vs Validation Accuracy')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Final test accuracy
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
+print(f"\nTest accuracy: {test_acc:.2f}")
+
+# Save the trained model
+model.save("cifar10_model.h5")
