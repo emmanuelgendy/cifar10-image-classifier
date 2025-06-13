@@ -103,3 +103,30 @@ print(f"\nTest accuracy: {test_acc:.2f}")
 
 # Save the trained model
 model.save("cifar10_model.h5")
+
+
+from tensorflow.keras import layers, models
+
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),  # Drop 25% of nodes in this layer
+
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),  # Drop 25%
+
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.Flatten(),
+
+    layers.Dense(64, activation='relu'),
+    layers.Dropout(0.5),  # Drop 50% before final classification
+
+    layers.Dense(10)
+])
+
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+history = model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test))
