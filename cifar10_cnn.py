@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.datasets import cifar10
 import matplotlib.pyplot as plt
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 
 # Load CIFAR-10 dataset
@@ -19,9 +20,19 @@ for i in range(10):
     plt.title(class_names[y_train[i][0]])
 plt.show()
 
+datagen = ImageDataGenerator(
+    rotation_range=15,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True
+)
+datagen.fit(x_train)
+
+
 
 from tensorflow.keras import layers, models
 
+'''
 model = models.Sequential([
     layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
     layers.MaxPooling2D((2, 2)),
@@ -32,16 +43,55 @@ model = models.Sequential([
     layers.Dense(64, activation='relu'),
     layers.Dense(10)
 ])
+'''
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=(32, 32, 3)),
+    layers.BatchNormalization(),
+    layers.Conv2D(32, (3, 3), activation='relu'),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D(pool_size=(2, 2)),
+    layers.Dropout(0.25),
 
+    layers.Conv2D(64, (3, 3), padding='same', activation='relu'),
+    layers.BatchNormalization(),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D(pool_size=(2, 2)),
+    layers.Dropout(0.25),
+
+    layers.Conv2D(128, (3, 3), padding='same', activation='relu'),
+    layers.BatchNormalization(),
+    layers.Conv2D(128, (3, 3), activation='relu'),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D(pool_size=(2, 2)),
+    layers.Dropout(0.25),
+
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.BatchNormalization(),
+    layers.Dropout(0.5),
+    layers.Dense(10)
+])
+
+
+'''
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+model.summary()
+history = model.fit(x_train, y_train, epochs=10,
+                    validation_data=(x_test, y_test))
+'''
 model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-model.summary()
+history = model.fit(datagen.flow(x_train, y_train, batch_size=64),
+                    epochs=50,
+                    validation_data=(x_test, y_test),
+                    callbacks=[tf.keras.callbacks.EarlyStopping(patience=5, restore_best_weights=True)])
 
 
-history = model.fit(x_train, y_train, epochs=10,
-                    validation_data=(x_test, y_test))
 
 plt.plot(history.history['accuracy'], label='train acc')
 plt.plot(history.history['val_accuracy'], label='val acc')
@@ -55,7 +105,9 @@ test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
 print(f"\nTest accuracy: {test_acc:.2f}")
 
 # Save model
-model.save("cifar10_model.h5")
+#model.save("cifar10_model.h5")
+model.save("cifar10_model_improved.keras")
+
 
 from tensorflow.keras import layers, models
 

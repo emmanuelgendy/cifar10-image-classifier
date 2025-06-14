@@ -28,7 +28,8 @@ class_names = ['airplane','automobile','bird','cat','deer','dog','frog','horse',
 # Load the trained model
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("cifar10_model.h5")
+    #model = tf.keras.models.load_model("cifar10_model.h5")
+    model = tf.keras.models.load_model("cifar10_model_improved.keras")
     return tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
 model = load_model()
