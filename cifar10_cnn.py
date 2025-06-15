@@ -182,3 +182,10 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 history = model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test))
+
+
+import pickle
+
+# Save history
+with open("training_history.pkl", "wb") as f:
+    pickle.dump(history.history, f)
