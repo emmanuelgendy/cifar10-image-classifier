@@ -4,6 +4,49 @@ import numpy as np
 from PIL import Image
 import cv2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+import matplotlib.pyplot as plt
+import pickle
+
+
+def plot_training_history():
+    try:
+        with open("training_history.pkl", "rb") as f:
+            history = pickle.load(f)
+
+        acc = history['accuracy']
+        val_acc = history['val_accuracy']
+        loss = history['loss']
+        val_loss = history['val_loss']
+        epochs = range(1, len(acc) + 1)
+
+        st.subheader("📈 Training History")
+
+        # Accuracy Plot
+        fig1, ax1 = plt.subplots()
+        ax1.plot(epochs, acc, label='Train Accuracy')
+        ax1.plot(epochs, val_acc, label='Val Accuracy')
+        ax1.set_title("Accuracy over Epochs")
+        ax1.set_xlabel("Epoch")
+        ax1.set_ylabel("Accuracy")
+        ax1.legend()
+        st.pyplot(fig1)
+
+        # Loss Plot
+        fig2, ax2 = plt.subplots()
+        ax2.plot(epochs, loss, label='Train Loss')
+        ax2.plot(epochs, val_loss, label='Val Loss')
+        ax2.set_title("Loss over Epochs")
+        ax2.set_xlabel("Epoch")
+        ax2.set_ylabel("Loss")
+        ax2.legend()
+        st.pyplot(fig2)
+
+    except FileNotFoundError:
+        st.warning("Training history file not found. Please train and save the model first.")
+
+if st.checkbox("📊 Show Training History"):
+    plot_training_history()
+
 
 class CIFARCam(VideoTransformerBase):
     def transform(self, frame):
@@ -67,3 +110,4 @@ webrtc_streamer(
     key="cifar-webcam",
     video_transformer_factory=CIFARCam
 )
+
