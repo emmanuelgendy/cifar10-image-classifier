@@ -1,21 +1,30 @@
-# cifar10-image-classifier
- Image classification on CIFAR-10 using CNNs in TensorFlow/Keras.
+# CIFAR-10 Image Classifier (with Streamlit App)
 
- # CIFAR-10 Image Classifier
+This is an end-to-end deep learning project that classifies images from the CIFAR-10 dataset using a Convolutional Neural Network (CNN), with a live **Streamlit app** to upload and test your own images.
 
-A simple Convolutional Neural Network (CNN) built with TensorFlow/Keras to classify images from the CIFAR-10 dataset into 10 categories.
+---
 
-## Dataset
-- CIFAR-10: 60,000 32x32 color images in 10 classes
+## Project Overview
 
-## Tech Stack
-- Python
-- TensorFlow / Keras
-- NumPy
-- Matplotlib
+Over the past few days, this project has gone from a basic CNN to a live, interactive image classification app:
 
-## How to Run
+- Built & trained a CNN model on CIFAR-10
+- Improved accuracy with Dropout & tuning
+- Visualized training history (accuracy/loss)
+- Created a webcam-ready Streamlit interface
+- Prepared for cloud deployment via Streamlit Cloud
+
+---
+
+## Project Structure
 
 ```bash
-pip install -r requirements.txt
-python cifar10_cnn.py
+.
+├── streamlit_app.py           # Streamlit interface to classify images
+├── cifar10_cnn.py             # Model training script
+├── plot_training.py           # Training accuracy/loss visualization
+├── training_history.pkl       # Saved training history for plotting
+├── cifar10_model.keras        # Trained CNN model
+├── requirements.txt           # Python dependencies
+├── runtime.txt                # Python version for Streamlit Cloud
+└── README.md                  # Project overview
