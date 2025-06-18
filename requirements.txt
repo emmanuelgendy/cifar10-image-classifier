@@ -1,6 +1,5 @@
 streamlit
 tensorflow-cpu==2.13.0
 numpy
-matplotlib
 pillow
-opencv-python
+matplotlib
