@@ -8,7 +8,7 @@ st.title("CIFAR-10 Image Classifier")
 # Load model
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("cifar10_model_compatible.keras")
+    model = tf.keras.models.load_model("cifar10_model")
     return model
 
 model = load_model()

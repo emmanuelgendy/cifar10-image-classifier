@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7015d855-deb0-4a9a-b078-279427f1730c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cifar10_model_compatible.keras" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_app.py" afterDir="false" />
     </list>
@@ -86,7 +85,7 @@
       <workItem from="1749926499007" duration="6763000" />
       <workItem from="1749960256432" duration="354000" />
       <workItem from="1749960736339" duration="205000" />
-      <workItem from="1750018634030" duration="6346000" />
+      <workItem from="1750018634030" duration="6616000" />
     </task>
     <servers />
   </component>
