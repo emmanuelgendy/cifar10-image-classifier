@@ -6,8 +6,7 @@ from PIL import Image
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("cifar100_model_improved.keras")
-Add commentMore actions
+    return tf.keras.models.load_model("cifar10_model.h5")
 
 model = load_model()
 
@@ -30,7 +29,7 @@ class_names = [
     'whale', 'willow_tree', 'wolf', 'woman', 'worm'
 ]
 
-st.title("CIFAR-100 Image Classifier")
+st.title("CIFAR-10 Image Classifier")
 
 option = st.radio("Choose input method:", ["Upload image", "Use webcam"])
 
