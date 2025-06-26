@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7015d855-deb0-4a9a-b078-279427f1730c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/streamlit_app_cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_app_cifar10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +113,7 @@
       <workItem from="1749960256432" duration="354000" />
       <workItem from="1749960736339" duration="205000" />
       <workItem from="1750018634030" duration="16586000" />
-      <workItem from="1750972206533" duration="405000" />
+      <workItem from="1750972206533" duration="619000" />
     </task>
     <servers />
   </component>
