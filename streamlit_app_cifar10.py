@@ -10,7 +10,7 @@ def load_model():
 
 model = load_model()
 
-class_names = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
+class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 st.title("CIFAR-10 Image Classifier")
 

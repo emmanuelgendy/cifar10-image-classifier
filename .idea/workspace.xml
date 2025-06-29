@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7015d855-deb0-4a9a-b078-279427f1730c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamlit_app_cifar10.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_app_cifar10.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +114,7 @@
       <workItem from="1749960736339" duration="205000" />
       <workItem from="1750018634030" duration="16586000" />
       <workItem from="1750972206533" duration="3413000" />
-      <workItem from="1751144760046" duration="1352000" />
+      <workItem from="1751144760046" duration="1397000" />
     </task>
     <servers />
   </component>
