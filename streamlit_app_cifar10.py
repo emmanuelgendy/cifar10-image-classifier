@@ -8,7 +8,7 @@ CLASS_NAMES = ['airplane', 'automobile', 'bird', 'cat', 'deer',
                'dog', 'frog', 'horse', 'ship', 'truck']
 
 st.set_page_config(page_title="CIFAR-10 Image Classifier", layout="centered")
-st.title("🧠 CIFAR-10 Image Classifier")
+st.title("CIFAR-10 Image Classifier")
 st.markdown("Upload an image and get the predicted CIFAR-10 class.")
 
 # Load or define the model
@@ -21,7 +21,7 @@ model = load_model()
 
 # Image upload
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-
+# Missing Webcam option
 if uploaded_file is not None:
     # Display uploaded image
     image = Image.open(uploaded_file).convert('RGB')
